@@ -2,18 +2,12 @@ package ru.mirea.lab3;
 
 public class TestMovable {
     public static void main(String[] args) {
-        Movable circle = new MovableCircle(0, 0, 5, 10, 9);
+        Movable rectangle = new MovableRectangle(-10, 10, 10, -10, 5, 5);
 
-        System.out.println(circle);
+        System.out.println(rectangle);
 
-        circle.moveRight();
-        circle.moveUp();
+        rectangle.moveUp();
 
-        System.out.println(circle);
-
-        circle.moveUp();
-        circle.moveRight();
-
-        System.out.println(circle);
+        System.out.println(rectangle);
     }
 }
