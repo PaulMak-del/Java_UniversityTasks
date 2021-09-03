@@ -17,7 +17,7 @@ public class MovablePoint extends Movable
 
     public String toString()
     {
-        return "( " + this.x + ", " + this.y + " )";
+        return "point ( " + this.x + ", " + this.y + " )";
     }
 
     @Override

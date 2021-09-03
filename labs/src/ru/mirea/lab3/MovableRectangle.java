@@ -16,6 +16,11 @@ public class MovableRectangle extends Movable
         return "TopLeft point: " + topLeft.toString() + "\nBottomRight point: " + bottomRight.toString();
     }
 
+    public boolean isSpeedCorrect()
+    {
+        return (topLeft.xSpeed == bottomRight.xSpeed) && (topLeft.ySpeed == bottomRight.ySpeed);
+    }
+
     @Override
     void moveUp()
     {

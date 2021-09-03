@@ -13,7 +13,7 @@ public class MovableCircle extends Movable
 
     public String toString()
     {
-        return center.toString();
+        return "center in " + center.toString();
     }
 
     @Override
