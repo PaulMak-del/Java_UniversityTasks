@@ -13,7 +13,7 @@ public class MovableRectangle extends Movable
 
     public String toString()
     {
-        return "TopLeft point: " + topLeft.toString() + "\nBottomRight point: " + bottomRight.toString();
+        return "TopLeft " + topLeft.toString() + "\nBottomRight " + bottomRight.toString();
     }
 
     public boolean isSpeedCorrect()
