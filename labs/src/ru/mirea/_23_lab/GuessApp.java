@@ -55,7 +55,6 @@ public class GuessApp extends JFrame
                 {
                     JOptionPane.showMessageDialog(null, "You lose(");
                     dispose();
-                    return;
                 }
             }
         });
