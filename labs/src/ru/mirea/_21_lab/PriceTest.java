@@ -8,8 +8,8 @@ public class PriceTest
         Priceable waterBottle = new Product("water", 4.99);
         Priceable ticket = new Ticket("Joker", "12:35", 6.50);
 
-        System.out.println(book.getPrice());
-        System.out.println(waterBottle.getPrice());
-        System.out.println(ticket.getPrice());
+        System.out.println("Book price equals " + book.getPrice());
+        System.out.println("Water bottle price equals " + waterBottle.getPrice());
+        System.out.println("Ticket price equals " + ticket.getPrice());
     }
 }

@@ -9,12 +9,15 @@ public class GuessApp extends JFrame
 {
     private JTextField guessPane = new JTextField(10);
     private JButton ok = new JButton("Ok");
+    private JLabel text = new JLabel("Угадайте число от 0 до 20");
+    private JPanel[] panels = new JPanel[2];
     private final int randomNum;
     private int count;
 
     public GuessApp()
     {
-        setSize(200, 100);
+        super("Guess the number");
+        setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         randomNum = (int)(Math.random() * 20);
@@ -27,9 +30,20 @@ public class GuessApp extends JFrame
 
     public void init()
     {
+        for (int i = 0; i < panels.length; i++)
+        {
+            panels[i] = new JPanel();
+            add(panels[i]);
+            panels[i].setLayout(new FlowLayout());
+        }
+
         setLayout(new FlowLayout());
-        add(guessPane);
-        add(ok);
+
+        panels[0].add(text);
+        panels[1].add(guessPane);
+        panels[1].add(ok);
+
+        setBackground(Color.PINK);
 
         ok.addMouseListener(new MouseAdapter()
         {

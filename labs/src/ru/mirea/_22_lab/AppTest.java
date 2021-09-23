@@ -8,9 +8,6 @@ public class AppTest
     {
         App app = new App();
 
-        final int windowWidth = app.getWidth();
-        final int windowHeight = app.getHeight();
-
         for (int i = 0; i < 20; i++)
         {
             int figureNum = (int)(Math.random() * 3);
