@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class FileWriterTest {
     public static void main(String[] args) {
-        try(FileWriter writer = new FileWriter("E:\\Учёба\\UniversityLabs\\File.txt", true))
+        try(FileWriter writer = new FileWriter("G:\\Учёба\\Жаба\\UniversityLabs\\File.txt", true))
         {
             String text;
             Scanner sc = new Scanner(System.in);

@@ -14,7 +14,7 @@ public class WaitListTest
         System.out.println(bList);
 
         bList.add(4);
-        System.out.println(bList.getCapacity());
+        System.out.println("bLists size: " + bList.getCapacity());
 
         UnfairWaitList<Integer> uList = new UnfairWaitList<>();
 
@@ -28,5 +28,8 @@ public class WaitListTest
         System.out.println(uList);
         uList.moveToBack(2);
         System.out.println(uList);
+
+        System.out.println("uList contains 0? :" + uList.contains(0));
+        System.out.println("uList contains {0, 1, 2}? :" + uList.containsAll(bList.content));
     }
 }

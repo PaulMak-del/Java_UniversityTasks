@@ -25,13 +25,7 @@ public class BoundedWaitList<E> extends WaitList<E>
         }
         else
         {
-            // Change for error throw
             System.out.println("The WaitList Full");
         }
-    }
-
-    public String toString()
-    {
-        return this.content.toString();
     }
 }

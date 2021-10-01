@@ -18,7 +18,7 @@ public class SortAndFindTest
 
         System.out.println();
         System.out.println("Students sorted by ID with selection sort: ");
-        SortingAndFind.selectionSort(students);
+        SortAndFind.selectionSort(students);
         for (Student i : students)
         {
             System.out.println(i);
@@ -27,7 +27,7 @@ public class SortAndFindTest
         System.out.println();
         System.out.println("Students sorted by GPA with quick sort: ");
         StudentGpaComparator sgc = new StudentGpaComparator();
-        SortingAndFind.quickSort(students, 0, students.length - 1);
+        SortAndFind.quickSort(students, 0, students.length - 1);
 
         for (Student i : students)
         {
@@ -36,7 +36,7 @@ public class SortAndFindTest
 
         System.out.println();
         System.out.println("Students sorted by GPA and ID with merge sort: ");
-        SortingAndFind.mergeSort(students, 0, students.length - 1);
+        SortAndFind.mergeSort(students, 0, students.length - 1);
         for (Student i : students)
         {
             System.out.println(i);
@@ -46,7 +46,7 @@ public class SortAndFindTest
 
         try
         {
-            System.out.println(SortingAndFind.find(students, st));
+            System.out.println(SortAndFind.find(students, st));
         }
         catch (StudentNotFoundException e)
         {
