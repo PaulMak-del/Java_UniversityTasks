@@ -12,7 +12,7 @@ public class ChangeWordPlaces
 
         // Check for correct input
         String fileName = sc.nextLine();
-        ArrayList<String> wordsArray = new ArrayList<String>(Arrays.asList(fileName.split(" ")));
+        ArrayList<String> wordsArray = new ArrayList<>(Arrays.asList(fileName.split(" ")));
 
         System.out.println(getLine(wordsArray));
     }
