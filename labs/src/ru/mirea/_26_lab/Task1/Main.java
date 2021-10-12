@@ -1,4 +1,6 @@
-package ru.mirea._26_lab;
+package ru.mirea._26_lab.Task1;
+
+import ru.mirea._26_lab.Task2.Exception2;
 
 public class Main
 {

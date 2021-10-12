@@ -1,4 +1,4 @@
-package ru.mirea._26_lab;
+package ru.mirea._26_lab.Task1;
 
 public class Exception1
 {
