@@ -1,88 +1,120 @@
 package ru.mirea._15_lab;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Frame extends JFrame
 {
-    private JMenuBar menuBar = new JMenuBar();
-    private JMenu file = new JMenu("File");
-    private JMenuItem newFile = new JMenuItem("New");
-    private JMenuItem open = new JMenuItem("Open");
-    private JMenuItem save = new JMenuItem("Save");
-    private JMenuItem exit = new JMenuItem("Exit");
-
     public Frame()
     {
         super("Практическая работа№15");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JMenuBar menuBar = new JMenuBar();
+        JMenu file = new JMenu("File");
+        JMenuItem newFile = new JMenuItem("New");
+        JMenuItem open = new JMenuItem("Open");
+        JMenuItem save = new JMenuItem("Save");
+        JMenuItem exit = new JMenuItem("Exit");
 
-        addMenu();
-
-        CreateTextDocument textFactory = new CreateTextDocument();
-        doAction(textFactory.createNew());
-
-        setVisible(true);
-    }
-
-    public void addMenu()
-    {
         file.add(newFile);
         file.add(open);
         file.add(save);
         file.add(exit);
         menuBar.add(file);
         setJMenuBar(menuBar);
-    }
 
-    public void doAction(IDocument document)
-    {
-        newFile.addActionListener(new ActionListener()
+        CreateTextDocument factory = new CreateTextDocument(); // Меняется только эта строка
+
+        IDocument document = factory.createNew();
+
+        newFile.addActionListener(e ->
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
+            System.out.println("New File");
+            if (document instanceof TextDocument)
             {
-                if (document instanceof TextDocument)
+                Frame frame = new Frame();
+                ((TextDocument) document).addTextArea(frame);
+            }
+            else
+            {
+                System.err.println("ERROR: Problem file");
+            }
+        });
+
+        open.addActionListener(e ->
+        {
+            System.out.println("Open File");
+
+            if (document instanceof TextDocument)
+            {
+                Frame frame = new Frame();
+                frame.setTitle("Text Document");
+
+                try
                 {
-                    TextDocument textDocument = (TextDocument) document;
-                    textDocument.info();
+                    FileReader reader = new FileReader("G:\\Study\\Java\\UniversityLabs\\labs\\src\\ru\\mirea\\_15_lab\\documents.txt");
 
-                    Frame frame = new Frame();
-                    frame.setTitle("Text Document");
-                    frame.setSize(600, 200);
-                    JTextArea text = new JTextArea("", 40, 40);
-                    frame.add(text);
-                }
-                else if (document instanceof ImageDocument)
+                    StringBuffer textInFile = new StringBuffer(" ");
+                    int ch = reader.read();
+                    while (ch != -1)
+                    {
+                        textInFile.append((char)ch);
+                        ch = reader.read();
+                    }
+
+                    System.out.println(textInFile);
+
+                    ((TextDocument) document).setText(textInFile.toString());
+
+                    frame.add(((TextDocument) document).textArea);
+                    frame.setVisible(true);
+
+                    reader.close();
+                } catch (IOException fileNotFoundException)
                 {
-                    ImageDocument imageDocument = (ImageDocument) document;
-                    imageDocument.info();
-
-                    Frame frame = new Frame();
-                    frame.setTitle("Image Document");
-                    frame.setSize(400, 400);
+                    fileNotFoundException.printStackTrace();
                 }
             }
-        });
-
-        exit.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
+            else
             {
-                setVisible(false);
+                System.err.println("ERROR: Problem file");
             }
         });
 
-        save.addActionListener(new ActionListener()
+        save.addActionListener(e ->
         {
-            public void actionPerformed(ActionEvent e)
+            System.out.println("Save File");
+            if (document instanceof TextDocument)
             {
-                System.out.println("I can't save it!!");
+                String textInArea = ((TextDocument) document).getText();
+
+                try
+                {
+                    FileWriter writer = new FileWriter("G:\\Study\\Java\\UniversityLabs\\labs\\src\\ru\\mirea\\_15_lab\\documents.txt", false);
+                    writer.write(textInArea);
+                    writer.flush();
+                    writer.close();
+                } catch (IOException ioException)
+                {
+                    System.out.println("Can't open file with documents");
+                }
             }
+            else
+            {
+                System.err.println("ERROR: Problem file");
+            }
+
         });
+
+        exit.addActionListener(e ->
+        {
+            System.out.println("Exit File");
+            setVisible(false);
+        });
+
+        setVisible(true);
     }
-
 }

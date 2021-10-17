@@ -11,7 +11,7 @@ class Money
 		Scanner sc = new Scanner(System.in);
 		String str = sc.nextLine();
 		
-		Pattern pattern = Pattern.compile("\\d\\d\\.\\d\\d\\s(USD|RUB|EU)");
+		Pattern pattern = Pattern.compile("(\\d+)\\.\\d\\d\\s(USD|RUB|EU)");
 		Matcher matcher = pattern.matcher(str);
 
 		while (matcher.find())

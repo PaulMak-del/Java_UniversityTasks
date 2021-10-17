@@ -23,7 +23,7 @@ class GoodPassword
 				break;
 			}
 
-			System.out.println("No, no, no... Not good password");
+			System.out.println("Not good password");
 		}
 	}
 }

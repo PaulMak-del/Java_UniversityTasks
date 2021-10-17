@@ -1,23 +1,25 @@
 package ru.mirea._15_lab;
 
-import java.util.HashMap;
+import javax.swing.*;
 
 public class TextDocument implements IDocument
 {
-    private HashMap<String, Frame> frames = new HashMap<>();
+    public JTextArea textArea = new JTextArea("", 40, 40);
 
-    public void info()
+    public void setText(String text)
     {
-        System.out.println("Text Document");
+        this.textArea.setText(text);
     }
 
-    public void save(String name, Frame document)
+    public String getText()
     {
-        frames.put(name, document);
+        return this.textArea.getText();
     }
 
-    public Frame open(String name)
+    public void addTextArea(Frame frame)
     {
-        return frames.get(name);
+        frame.setTitle("Text Document");
+        this.textArea.setText("VERY BIG STRING!!!!");
+        frame.add(this.textArea);
     }
 }
