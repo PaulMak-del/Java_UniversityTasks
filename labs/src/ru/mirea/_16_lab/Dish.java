@@ -36,4 +36,9 @@ public class Dish implements Item
     {
         return this.description;
     }
+
+    public String toString()
+    {
+        return this.name;
+    }
 }
