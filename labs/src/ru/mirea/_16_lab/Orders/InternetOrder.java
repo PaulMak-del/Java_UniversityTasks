@@ -1,8 +1,14 @@
-package ru.mirea._16_lab;
+package ru.mirea._16_lab.Orders;
+
+import ru.mirea._16_lab.Collection.DoublyLinkList;
+import ru.mirea._16_lab.Comparator.ItemCostComparator;
+import ru.mirea._16_lab.Menu.Item;
+
+import java.util.Arrays;
 
 public class InternetOrder implements Order
 {
-    private DoublyLinkList orderList;
+    private final DoublyLinkList orderList;
 
     public InternetOrder()
     {
@@ -56,7 +62,7 @@ public class InternetOrder implements Order
 
         for (int i = 0; i < orderList.size(); i++)
         {
-            totalCost = orderList.get(i).getCost();
+            totalCost += orderList.get(i).getCost();
         }
 
         return totalCost;
@@ -122,5 +128,10 @@ public class InternetOrder implements Order
         }
 
         return items;
+    }
+
+    public String toString()
+    {
+        return Arrays.toString(getItems());
     }
 }

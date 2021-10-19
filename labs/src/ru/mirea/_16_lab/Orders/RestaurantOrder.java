@@ -1,4 +1,8 @@
-package ru.mirea._16_lab;
+package ru.mirea._16_lab.Orders;
+
+import ru.mirea._16_lab.Menu.Item;
+
+import java.util.Arrays;
 
 public class RestaurantOrder implements Order
 {
@@ -10,10 +14,7 @@ public class RestaurantOrder implements Order
         if (items.length >= size)
         {
             Item[] copy_dishes = new Item[size+5];
-            for (int i = 0; i < size; i++)
-            {
-                copy_dishes[i] = items[i];
-            }
+            System.arraycopy(items, 0, copy_dishes, 0, size);
 
             items = copy_dishes;
         }
@@ -34,10 +35,7 @@ public class RestaurantOrder implements Order
         {
             if ((items[i].getName()).equals(itemName))
             {
-                for (int j = i; j < size - 1; j++)
-                {
-                    items[j] = items[j+1];
-                }
+                System.arraycopy(items, i + 1, items, i, size - 1 - i);
                 items[size - 1] = null;
                 size--;
                 return true;
@@ -63,10 +61,7 @@ public class RestaurantOrder implements Order
         {
             if ((items[i].getName()).equals(itemName))
             {
-                for (int j = i; j < size - 1; j++)
-                {
-                    items[j] = items[j+1];
-                }
+                System.arraycopy(items, i + 1, items, i, size - 1 - i);
                 items[size - 1] = null;
                 copy_size--;
                 count++;
@@ -97,15 +92,19 @@ public class RestaurantOrder implements Order
 
     public Item[] getItems()
     {
-        return items;
+        Item[] copy_items = new Item[size];
+
+        System.arraycopy(items, 0, copy_items, 0, size);
+
+        return copy_items;
     }
 
     public double getTotalCost()
     {
         double cost = 0;
 
-        for (Item item : items)
-            cost += item.getCost();
+        for (int i = 0; i < size; i++)
+            cost += items[i].getCost();
 
         return cost;
     }
@@ -138,5 +137,10 @@ public class RestaurantOrder implements Order
         }
 
         return items;
+    }
+
+    public String toString()
+    {
+        return Arrays.toString(getItems());
     }
 }

@@ -1,4 +1,6 @@
-package ru.mirea._16_lab;
+package ru.mirea._16_lab.Collection;
+
+import ru.mirea._16_lab.Menu.Item;
 
 public class Node
 {

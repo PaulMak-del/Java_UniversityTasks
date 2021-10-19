@@ -1,4 +1,6 @@
-package ru.mirea._16_lab;
+package ru.mirea._16_lab.Orders;
+
+import ru.mirea._16_lab.Menu.Item;
 
 public interface Order
 {
@@ -11,4 +13,5 @@ public interface Order
     int itemQuantity(String itemName);
     String[] itemsNames();
     Item[] sortItems();
+    String toString();
 }

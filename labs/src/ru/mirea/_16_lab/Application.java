@@ -1,43 +1,92 @@
 package ru.mirea._16_lab;
 
+import ru.mirea._16_lab.Enums.DishTypeEnum;
+import ru.mirea._16_lab.Enums.DrinkTypeEnum;
+import ru.mirea._16_lab.Exceptions.IllegalTableNumberException;
+import ru.mirea._16_lab.Exceptions.OrderAlreadyAddedException;
+import ru.mirea._16_lab.Menu.Dish;
+import ru.mirea._16_lab.Menu.Drink;
+import ru.mirea._16_lab.Menu.Item;
+import ru.mirea._16_lab.Orders.InternetOrder;
+import ru.mirea._16_lab.Orders.Order;
+import ru.mirea._16_lab.Orders.OrderManager;
+import ru.mirea._16_lab.Orders.RestaurantOrder;
+
 import java.util.Arrays;
 
 public class Application
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws OrderAlreadyAddedException, IllegalTableNumberException
     {
-        Item item_1 = new Dish(1, "Name_1", "wfiw");
-        Item item_2 = new Dish(2, "Name_2", "wfiw");
-        Item item_3 = new Dish(3, "Name_3", "wfiw");
-        Item item_4 = new Dish(4, "Name_4", "wfiw");
-        Item item_5 = new Dish(5, "Name_5", "wfiw");
-        Item item_6 = new Dish(6, "Name_6", "wfiw");
-        DoublyLinkList list = new DoublyLinkList();
+        Item pizza = new Dish(10.99, DishTypeEnum.PIZZA.name(), "Pizza is an Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients (such as anchovies, mushrooms, onions, olives, pineapple, meat, etc.), which is then baked at a high temperature, traditionally in a wood-fired oven.");
+        Item hot_dog = new Dish(21.50, DishTypeEnum.HOTDOG.name(), "Some description");
+        Item rise = new Dish(13.40, DishTypeEnum.RISE.name(), "Some description");
+        Item hamburger = new Dish(24.15, DishTypeEnum.HAMBURGER.name(), "Some description");
+        Item sandwich = new Dish(15.69, DishTypeEnum.SANDWICH.name(), "Some description");
+        Item steak = new Dish(16.20, DishTypeEnum.STEAK.name(), "Some description");
 
-        list.insert(item_1);
-        list.insert(item_3);
-        list.insert(item_5);
-        list.insert(item_2);
-        list.insert(item_4);
+        Item beer = new Drink(1.50, DrinkTypeEnum.BEER.name(), "Some description");
+        Item wine = new Drink(2.25, DrinkTypeEnum.WINE.name(), "Some description");
+        Item tea = new Drink(3.00, DrinkTypeEnum.TEA.name(), "Some description");
+        Item soda = new Drink(2.75, DrinkTypeEnum.SODA.name(), "Some description");
+        Item coffee = new Drink(1.75, DrinkTypeEnum.COFFEE.name(), "Some description");
+        Item brandy = new Drink(6.20, DrinkTypeEnum.BRANDY.name(), "Some description");
 
-        list.display();
-
-        Order order_1 = new InternetOrder();
-        Order order_2 = new InternetOrder();
-        Order order_3 = new InternetOrder();
-        order_1.add(item_1);
-        order_1.add(item_6);
-        order_2.add(item_2);
-        order_2.add(item_5);
-        order_3.add(item_3);
-        order_3.add(item_4);
-
+        Order internetOrder = new InternetOrder();
+        Order restaurantOrder_1 = new RestaurantOrder();
+        Order restaurantOrder_2 = new RestaurantOrder();
         OrderManager orderManager = new OrderManager();
 
-        orderManager.add("address_1", order_1);
-        orderManager.add("address_2", order_2);
-        orderManager.add("address_3", order_3);
+        internetOrder.add(pizza);
+        internetOrder.add(hamburger);
+        internetOrder.add(beer);
+        internetOrder.add(soda);
+        String address = "Some_address";
+        orderManager.add(address, internetOrder);
 
+        restaurantOrder_1.add(hot_dog);
+        restaurantOrder_1.add(sandwich);
+        restaurantOrder_1.add(wine);
+        restaurantOrder_1.add(coffee);
+        int freeTable = 4;
+        orderManager.add(restaurantOrder_1, freeTable);
+        orderManager.addItem(wine, freeTable);
+
+        restaurantOrder_2.add(rise);
+        restaurantOrder_2.add(steak);
+        restaurantOrder_2.add(tea);
+        restaurantOrder_2.add(brandy);
+        freeTable = 12;
+        orderManager.add(restaurantOrder_2, freeTable);
+
+        System.out.println("Заказ по адресу " + address + ": " + Arrays.toString(orderManager.getOrder(address).getItems()));
+        System.out.println("Общая сумма заказа: " + orderManager.getOrder(address).getTotalCost() + '\n');
+
+        System.out.println("Заказ столика №4: " + Arrays.toString(orderManager.getOrder(4).getItems()));
+        System.out.println("Общая сумма заказа: " + orderManager.getOrder(4).getTotalCost() + '\n');
+
+        System.out.println("Заказ столика №12: " + Arrays.toString(orderManager.getOrder(12).getItems()));
+        System.out.println("Общая сумма заказа: " + orderManager.getOrder(12).getTotalCost() + '\n');
+
+        System.out.println("Свободные столики: " + Arrays.toString(orderManager.freeTableNumbers()) + '\n');
+
+        orderManager.removeOrder(freeTable);
+        System.out.println("Столик 12 освободился");
+        restaurantOrder_2.remove(tea.getName());
+        restaurantOrder_2.remove(rise.getName());
+        restaurantOrder_2.add(beer);
+        restaurantOrder_2.add(pizza);
+        freeTable = orderManager.freeTableNumber();
+        orderManager.add(restaurantOrder_2, freeTable);
+
+        System.out.println("Заказ столика №" + freeTable + ": " + Arrays.toString(orderManager.getOrder(freeTable).getItems()));
+        System.out.println("Общая сумма заказа: " + orderManager.getOrder(freeTable).getTotalCost() + '\n');
+
+        System.out.println("Заказы в ресторане: " + Arrays.toString(orderManager.getRestaurantOrders()));
+        System.out.println("Стоимость всех заказанных блюд и напитков в ресторане: " + orderManager.restaurantOrdersCostSummary() + '\n');
+
+        System.out.println("Заказы на дом: " + Arrays.toString(orderManager.getInternetOrders()));
+        System.out.println("Стоимость всех заказанных блюд и напитков на дом: " + orderManager.internetOrderCostSummary());
 
     }
 }
