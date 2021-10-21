@@ -7,13 +7,13 @@ public class Exception6
     public void getKey()
     {
         Scanner myScanner = new Scanner(System.in);
-        String key = myScanner.next();
+        String key = myScanner.nextLine();
         try
         {
             printDetails(key);
         } catch (Exception e)
         {
-            e.printStackTrace();
+            System.out.println("Key is empty");;
         }
     }
 
@@ -31,7 +31,7 @@ public class Exception6
 
     private String getDetails(String key) throws Exception
     {
-        if (key == "")
+        if (key.equals(""))
         {
             throw new Exception("Key set to empty string");
         }

@@ -1,16 +1,16 @@
-package ru.mirea._16_lab;
+package ru.mirea._16_17_lab;
 
-import ru.mirea._16_lab.Enums.DishTypeEnum;
-import ru.mirea._16_lab.Enums.DrinkTypeEnum;
-import ru.mirea._16_lab.Exceptions.IllegalTableNumberException;
-import ru.mirea._16_lab.Exceptions.OrderAlreadyAddedException;
-import ru.mirea._16_lab.Menu.Dish;
-import ru.mirea._16_lab.Menu.Drink;
-import ru.mirea._16_lab.Menu.Item;
-import ru.mirea._16_lab.Orders.InternetOrder;
-import ru.mirea._16_lab.Orders.Order;
-import ru.mirea._16_lab.Orders.OrderManager;
-import ru.mirea._16_lab.Orders.RestaurantOrder;
+import ru.mirea._16_17_lab.Enums.DishTypeEnum;
+import ru.mirea._16_17_lab.Enums.DrinkTypeEnum;
+import ru.mirea._16_17_lab.Exceptions.IllegalTableNumberException;
+import ru.mirea._16_17_lab.Exceptions.OrderAlreadyAddedException;
+import ru.mirea._16_17_lab.Menu.Dish;
+import ru.mirea._16_17_lab.Menu.Drink;
+import ru.mirea._16_17_lab.Menu.Item;
+import ru.mirea._16_17_lab.Orders.InternetOrder;
+import ru.mirea._16_17_lab.Orders.Order;
+import ru.mirea._16_17_lab.Orders.OrderManager;
+import ru.mirea._16_17_lab.Orders.RestaurantOrder;
 
 import java.util.Arrays;
 

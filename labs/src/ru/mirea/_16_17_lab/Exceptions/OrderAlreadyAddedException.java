@@ -1,4 +1,4 @@
-package ru.mirea._16_lab.Exceptions;
+package ru.mirea._16_17_lab.Exceptions;
 
 public class OrderAlreadyAddedException extends Exception
 {

@@ -1,12 +1,12 @@
-package ru.mirea._16_lab.Menu;
+package ru.mirea._16_17_lab.Menu;
 
-public class Dish implements Item
+public class Drink implements Item
 {
     private double cost;
     private String name;
     private String description;
 
-    public Dish(String name, String description)
+    public Drink(String name, String description)
     {
         if (name.equals("") || description.equals(""))
             throw new IllegalArgumentException();
@@ -15,7 +15,7 @@ public class Dish implements Item
         this.description = description;
     }
 
-    public Dish(double cost, String name, String description)
+    public Drink(double cost, String name, String description)
     {
         if (cost <= 0 || name.equals("") || description.equals(""))
             throw new IllegalArgumentException("Cost must be bigger than 0");
@@ -25,19 +25,16 @@ public class Dish implements Item
         this.description = description;
     }
 
-    @Override
     public double getCost()
     {
         return this.cost;
     }
 
-    @Override
     public String getName()
     {
         return this.name;
     }
 
-    @Override
     public String getDescription()
     {
         return this.description;
@@ -47,4 +44,5 @@ public class Dish implements Item
     {
         return this.name;
     }
+
 }

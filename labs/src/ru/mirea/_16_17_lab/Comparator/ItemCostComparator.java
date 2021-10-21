@@ -1,6 +1,6 @@
-package ru.mirea._16_lab.Comparator;
+package ru.mirea._16_17_lab.Comparator;
 
-import ru.mirea._16_lab.Menu.Item;
+import ru.mirea._16_17_lab.Menu.Item;
 
 import java.util.Comparator;
 

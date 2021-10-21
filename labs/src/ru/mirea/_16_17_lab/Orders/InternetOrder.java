@@ -1,8 +1,8 @@
-package ru.mirea._16_lab.Orders;
+package ru.mirea._16_17_lab.Orders;
 
-import ru.mirea._16_lab.Collection.DoublyLinkList;
-import ru.mirea._16_lab.Comparator.ItemCostComparator;
-import ru.mirea._16_lab.Menu.Item;
+import ru.mirea._16_17_lab.Collection.DoublyLinkList;
+import ru.mirea._16_17_lab.Comparator.ItemCostComparator;
+import ru.mirea._16_17_lab.Menu.Item;
 
 import java.util.Arrays;
 

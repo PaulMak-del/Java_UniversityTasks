@@ -1,4 +1,4 @@
-package ru.mirea._16_lab.Menu;
+package ru.mirea._16_17_lab.Menu;
 
 public interface Item
 {

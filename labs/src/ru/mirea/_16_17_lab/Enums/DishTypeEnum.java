@@ -1,4 +1,4 @@
-package ru.mirea._16_lab.Enums;
+package ru.mirea._16_17_lab.Enums;
 
 public enum DishTypeEnum
 {

@@ -1,12 +1,19 @@
 package ru.mirea._15_lab;
 
+import org.w3c.dom.Text;
+
 import javax.swing.*;
+import java.awt.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Frame extends JFrame
 {
+    private HashMap<String, String> documents = new HashMap<>();
+
     public Frame()
     {
         super("Практическая работа№15");
@@ -26,93 +33,62 @@ public class Frame extends JFrame
         menuBar.add(file);
         setJMenuBar(menuBar);
 
-        CreateTextDocument factory = new CreateTextDocument(); // Меняется только эта строка
+        CreateTextDocument factory = new CreateTextDocument();
 
         IDocument document = factory.createNew();
+        TextArea textArea = new TextArea("", 40, 40);
+        add(textArea);
 
         newFile.addActionListener(e ->
         {
-            System.out.println("New File");
+            System.out.println("New file");
             if (document instanceof TextDocument)
             {
-                Frame frame = new Frame();
-                ((TextDocument) document).addTextArea(frame);
+                textArea.setText("");
             }
             else
             {
-                System.err.println("ERROR: Problem file");
-            }
-        });
-
-        open.addActionListener(e ->
-        {
-            System.out.println("Open File");
-
-            if (document instanceof TextDocument)
-            {
-                Frame frame = new Frame();
-                frame.setTitle("Text Document");
-
-                try
-                {
-                    FileReader reader = new FileReader("G:\\Study\\Java\\UniversityLabs\\labs\\src\\ru\\mirea\\_15_lab\\documents.txt");
-
-                    StringBuffer textInFile = new StringBuffer(" ");
-                    int ch = reader.read();
-                    while (ch != -1)
-                    {
-                        textInFile.append((char)ch);
-                        ch = reader.read();
-                    }
-
-                    System.out.println(textInFile);
-
-                    ((TextDocument) document).setText(textInFile.toString());
-
-                    frame.add(((TextDocument) document).textArea);
-                    frame.setVisible(true);
-
-                    reader.close();
-                } catch (IOException fileNotFoundException)
-                {
-                    fileNotFoundException.printStackTrace();
-                }
-            }
-            else
-            {
-                System.err.println("ERROR: Problem file");
+                System.out.println("Some strange document");
             }
         });
 
         save.addActionListener(e ->
         {
-            System.out.println("Save File");
             if (document instanceof TextDocument)
             {
-                String textInArea = ((TextDocument) document).getText();
+                System.out.println("Под каким именем созранить файл?");
+                Scanner sc = new Scanner(System.in);
+                String name = sc.next();
 
-                try
-                {
-                    FileWriter writer = new FileWriter("G:\\Study\\Java\\UniversityLabs\\labs\\src\\ru\\mirea\\_15_lab\\documents.txt", false);
-                    writer.write(textInArea);
-                    writer.flush();
-                    writer.close();
-                } catch (IOException ioException)
-                {
-                    System.out.println("Can't open file with documents");
-                }
+                documents.put(name, textArea.getText());
             }
             else
             {
-                System.err.println("ERROR: Problem file");
+                System.out.println("Some strange document");
             }
+        });
 
+        open.addActionListener(e ->
+        {
+            if (document instanceof TextDocument)
+            {
+                System.out.println("Какой файл хотите открыть?");
+                System.out.println(documents.keySet());
+
+                Scanner sc = new Scanner(System.in);
+                String name = sc.next();
+
+                textArea.setText(documents.get(name));
+            }
+            else
+            {
+                System.out.println("Some strange file");
+            }
         });
 
         exit.addActionListener(e ->
         {
-            System.out.println("Exit File");
-            setVisible(false);
+            dispose();
         });
 
         setVisible(true);

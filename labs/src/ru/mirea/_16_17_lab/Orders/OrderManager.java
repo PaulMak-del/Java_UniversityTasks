@@ -1,8 +1,8 @@
-package ru.mirea._16_lab.Orders;
+package ru.mirea._16_17_lab.Orders;
 
-import ru.mirea._16_lab.Exceptions.IllegalTableNumberException;
-import ru.mirea._16_lab.Exceptions.OrderAlreadyAddedException;
-import ru.mirea._16_lab.Menu.Item;
+import ru.mirea._16_17_lab.Exceptions.IllegalTableNumberException;
+import ru.mirea._16_17_lab.Exceptions.OrderAlreadyAddedException;
+import ru.mirea._16_17_lab.Menu.Item;
 
 import java.util.HashMap;
 
