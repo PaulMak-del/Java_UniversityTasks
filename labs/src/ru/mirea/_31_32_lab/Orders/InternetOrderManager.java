@@ -66,7 +66,7 @@ public class InternetOrderManager implements OrderManager
 
         for (Order order : orders.values())
         {
-            costSummary += order.getTotalCost();
+            costSummary += order.costTotal();
         }
 
         return costSummary;

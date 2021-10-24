@@ -1,48 +1,45 @@
 package ru.mirea._31_32_lab.Menu;
 
-public class Drink implements MenuItem
+public class Drink extends MenuItem implements Alcoholable
 {
-    private double cost;
-    private final String name;
-    private final String description;
-
-    public Drink(String name, String description)
-    {
-        if (name.equals("") || description.equals(""))
-            throw new IllegalArgumentException();
-
-        this.name = name;
-        this.description = description;
-    }
+    private double alcoholVol;
+    private DrinkTypeEnum type;
 
     public Drink(double cost, String name, String description)
     {
-        if (cost <= 0 || name.equals("") || description.equals(""))
-            throw new IllegalArgumentException("Cost must be bigger than 0");
-
-        this.cost = cost;
-        this.name = name;
-        this.description = description;
+        super(cost, name, description);
     }
 
-    public double getCost()
+    public DrinkTypeEnum getType()
     {
-        return this.cost;
+        return this.type;
     }
 
-    public String getName()
+    @Override
+    public boolean isAlcoholicDrink()
     {
-        return this.name;
+        return !this.type.equals(DrinkTypeEnum.JUICE) && !this.type.equals(DrinkTypeEnum.COFFEE) &&
+                !this.type.equals(DrinkTypeEnum.GREEN_TEA) && !this.type.equals(DrinkTypeEnum.BLACK_TEA) &&
+                !this.type.equals(DrinkTypeEnum.MILK) && !this.type.equals(DrinkTypeEnum.WATER) && !this.type.equals(DrinkTypeEnum.SODA);
     }
 
-    public String getDescription()
+    @Override
+    public double getAlcoholVol()
     {
-        return this.description;
+        return switch (this.type)
+                {
+                    case BEER -> 5.00;
+                    case WINE -> 13.00;
+                    case VODKA -> 40.00;
+                    case BRANDY -> 37.00;
+                    case CHAMPAGNE -> 10.00;
+                    case WHISKEY -> 45.00;
+                    case TEQUILA -> 35.00;
+                    case RUM -> 50.00;
+                    case VERMUTH -> 18.00;
+                    case LIQUOR -> 42.00;
+                    case JAGERMEISTER -> 36.00;
+                    default -> throw new IllegalStateException("Unexpected value: " + this.type);
+                };
     }
-
-    public String toString()
-    {
-        return this.name;
-    }
-
 }

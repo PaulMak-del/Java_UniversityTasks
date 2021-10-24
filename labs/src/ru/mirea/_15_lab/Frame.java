@@ -4,9 +4,6 @@ import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 

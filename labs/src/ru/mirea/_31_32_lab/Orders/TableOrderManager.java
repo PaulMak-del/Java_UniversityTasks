@@ -144,7 +144,7 @@ public class TableOrderManager implements OrderManager
         for (Order restaurantOrder : orders)
         {
             if (restaurantOrder != null)
-                costSummary += restaurantOrder.getTotalCost();
+                costSummary += restaurantOrder.costTotal();
         }
 
         return costSummary;
