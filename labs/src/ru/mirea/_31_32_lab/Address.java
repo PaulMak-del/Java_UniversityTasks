@@ -2,11 +2,11 @@ package ru.mirea._31_32_lab;
 
 public class Address
 {
-    private String cityName;
-    private int zipCode;
-    private String streetName;
-    private int buildingNumber;
-    private int apartmentNumber;
+    private final String cityName;
+    private final int zipCode;
+    private final String streetName;
+    private final int buildingNumber;
+    private final int apartmentNumber;
     public static final Address EMPTY_ADDRESS = new Address(null, 0, null, 0, 0);
 
     public Address(String cityName, int zipCode, String streetName, int buildingNumber, int apartmentNumber)

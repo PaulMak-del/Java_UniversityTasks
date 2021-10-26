@@ -5,7 +5,6 @@ import ru.mirea._31_32_lab.Exceptions.IllegalTableNumberException;
 import ru.mirea._31_32_lab.Exceptions.OrderAlreadyAddedException;
 import ru.mirea._31_32_lab.Orders.*;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Application
@@ -106,6 +105,7 @@ public class Application
         TableOrder newOrder = new TableOrder();
         newOrder.add(hamburger);
         newOrder.add(sandwich);
+        newOrder.add(brandy);
         newOrder.add(water);
         newOrder.add(vodka);
         tableOrderManager.add(newOrder, freeTable);

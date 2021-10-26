@@ -2,10 +2,10 @@ package ru.mirea._31_32_lab;
 
 public class Customer
 {
-    private String firstName;
-    private String secondName;
-    private int age;
-    private Address address;
+    private final String firstName;
+    private final String secondName;
+    private final int age;
+    private final Address address;
     private static final Customer MATURE_UNKNOWN_CUSTOMER = new Customer(null, null, 90, null);
     private static final Customer NOT_MATURE_UNKNOWN_CUSTOMER = new Customer(null, null, 0, null);
 

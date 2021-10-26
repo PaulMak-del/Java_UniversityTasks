@@ -2,13 +2,28 @@ package ru.mirea._31_32_lab.Menu;
 
 public class Drink extends MenuItem implements Alcoholable
 {
-    private double alcoholVol;
-    private DrinkTypeEnum type;
+    private final double alcoholVol;
+    private final DrinkTypeEnum type;
 
     public Drink(double cost, DrinkTypeEnum type, String description)
     {
         super(cost, type.name(), description);
         this.type = type;
+        switch (this.type)
+        {
+            case BEER -> this.alcoholVol = 5.00;
+            case WINE -> this.alcoholVol = 13.00;
+            case VODKA -> this.alcoholVol = 40.00;
+            case BRANDY -> this.alcoholVol = 37.00;
+            case CHAMPAGNE -> this.alcoholVol = 10.00;
+            case WHISKEY -> this.alcoholVol = 45.00;
+            case TEQUILA -> this.alcoholVol = 35.00;
+            case RUM -> this.alcoholVol = 50.00;
+            case VERMUTH -> this.alcoholVol = 18.00;
+            case LIQUOR -> this.alcoholVol = 42.00;
+            case JAGERMEISTER -> this.alcoholVol = 36.00;
+            default -> this.alcoholVol = 0.00;
+        };
     }
 
     public DrinkTypeEnum getType()
@@ -27,20 +42,6 @@ public class Drink extends MenuItem implements Alcoholable
     @Override
     public double getAlcoholVol()
     {
-        return switch (this.type)
-                {
-                    case BEER -> 5.00;
-                    case WINE -> 13.00;
-                    case VODKA -> 40.00;
-                    case BRANDY -> 37.00;
-                    case CHAMPAGNE -> 10.00;
-                    case WHISKEY -> 45.00;
-                    case TEQUILA -> 35.00;
-                    case RUM -> 50.00;
-                    case VERMUTH -> 18.00;
-                    case LIQUOR -> 42.00;
-                    case JAGERMEISTER -> 36.00;
-                    default -> 0.00;
-                };
+        return this.alcoholVol;
     }
 }
