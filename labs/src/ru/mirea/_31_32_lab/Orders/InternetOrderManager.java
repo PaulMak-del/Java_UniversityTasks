@@ -1,5 +1,6 @@
 package ru.mirea._31_32_lab.Orders;
 
+import ru.mirea._31_32_lab.Address;
 import ru.mirea._31_32_lab.Exceptions.OrderAlreadyAddedException;
 import ru.mirea._31_32_lab.Menu.MenuItem;
 
@@ -7,9 +8,9 @@ import java.util.HashMap;
 
 public class InternetOrderManager implements OrderManager
 {
-    private final HashMap<String, Order> orders = new HashMap<>();
+    private final HashMap<Address, Order> orders = new HashMap<>();
 
-    public void add(String address, Order order) throws OrderAlreadyAddedException
+    public void add(Address address, Order order) throws OrderAlreadyAddedException
     {
         if (orders.get(address) != null)
             throw new OrderAlreadyAddedException();
@@ -17,12 +18,12 @@ public class InternetOrderManager implements OrderManager
         orders.put(address, order);
     }
 
-    public Order order(String address)
+    public Order order(Address address)
     {
         return orders.get(address);
     }
 
-    public void remove(String address)
+    public void remove(Address address)
     {
         orders.remove(address);
     }

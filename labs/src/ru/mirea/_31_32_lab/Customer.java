@@ -7,7 +7,7 @@ public class Customer
     private int age;
     private Address address;
     private static final Customer MATURE_UNKNOWN_CUSTOMER = new Customer(null, null, 90, null);
-    private Customer NOT_MATURE_UNKNOWN_CUSTOMER = new Customer(null, null, 0, null);
+    private static final Customer NOT_MATURE_UNKNOWN_CUSTOMER = new Customer(null, null, 0, null);
 
     public Customer(String firstName, String secondName, int age, Address address)
     {
@@ -35,5 +35,10 @@ public class Customer
     public Address getAddress()
     {
         return this.address;
+    }
+
+    public String toString()
+    {
+        return this.firstName + " " + this.secondName;
     }
 }

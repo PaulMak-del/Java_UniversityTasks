@@ -5,9 +5,10 @@ public class Drink extends MenuItem implements Alcoholable
     private double alcoholVol;
     private DrinkTypeEnum type;
 
-    public Drink(double cost, String name, String description)
+    public Drink(double cost, DrinkTypeEnum type, String description)
     {
-        super(cost, name, description);
+        super(cost, type.name(), description);
+        this.type = type;
     }
 
     public DrinkTypeEnum getType()
@@ -39,7 +40,7 @@ public class Drink extends MenuItem implements Alcoholable
                     case VERMUTH -> 18.00;
                     case LIQUOR -> 42.00;
                     case JAGERMEISTER -> 36.00;
-                    default -> throw new IllegalStateException("Unexpected value: " + this.type);
+                    default -> 0.00;
                 };
     }
 }

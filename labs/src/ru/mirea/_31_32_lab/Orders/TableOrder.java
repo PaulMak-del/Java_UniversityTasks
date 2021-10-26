@@ -1,5 +1,6 @@
 package ru.mirea._31_32_lab.Orders;
 
+import ru.mirea._31_32_lab.Comparator.ItemCostComparator;
 import ru.mirea._31_32_lab.Customer;
 import ru.mirea._31_32_lab.Menu.MenuItem;
 
@@ -176,13 +177,14 @@ public class TableOrder implements Order
     public MenuItem[] sortedItemsByCostDesc()
     {
         int min;
+        ItemCostComparator comp = new ItemCostComparator();
 
         for (int index = 0; index < size - 1; index++)
         {
             min = index;
             for (int scan = index + 1; scan < size; scan++)
             {
-                if (items[scan].getCost() < items[min].getCost())
+                if (comp.compare(items[min], items[scan]) < 0)
                     min = scan;
             }
             MenuItem temp = items[min];
@@ -190,7 +192,11 @@ public class TableOrder implements Order
             items[index] = temp;
         }
 
-        return items;
+        MenuItem[] copy_items = new MenuItem[size];
+        System.arraycopy(items, 0, copy_items, 0, size);
+
+
+        return copy_items;
     }
 
     public double costTotal()

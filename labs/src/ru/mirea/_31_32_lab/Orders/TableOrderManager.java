@@ -7,7 +7,7 @@ import ru.mirea._31_32_lab.Menu.MenuItem;
 // Предположим что наше заведение имеет только 5 столиков
 public class TableOrderManager implements OrderManager
 {
-    private Order[] orders = new Order[5];
+    private final Order[] orders = new Order[5];
 
     //Добавляет заказ столу с заданым номером
     public void add(Order order, int tableNumber) throws OrderAlreadyAddedException, IllegalTableNumberException

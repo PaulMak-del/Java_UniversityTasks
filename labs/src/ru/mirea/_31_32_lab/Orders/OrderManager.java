@@ -1,5 +1,7 @@
 package ru.mirea._31_32_lab.Orders;
 
+import ru.mirea._31_32_lab.Exceptions.IllegalTableNumberException;
+import ru.mirea._31_32_lab.Exceptions.OrderAlreadyAddedException;
 import ru.mirea._31_32_lab.Menu.MenuItem;
 
 public interface OrderManager

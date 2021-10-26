@@ -28,6 +28,6 @@ public class MenuItem
 
     public String toString()
     {
-        return "Name: " + this.name + "  Cost: " + this.cost + "  Description: " + this.description;
+        return this.name + " " + this.cost + " " + this.description;
     }
 }
